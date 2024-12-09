@@ -19,7 +19,7 @@ nltk.data.path.append(os.path.abspath("nltk_data"))
 nltk.download('punkt')
 
 # Load intents from the JSON file
-file_path = os.path.abspath("chatbot/intents.json")
+file_path = os.path.abspath("/workspaces/chatbot/intents.jason")
 print("Intents file path:", file_path)  # Debugging print statement
 with open(file_path, "r") as file:
     intents = json.load(file)
