@@ -3,6 +3,7 @@ import json
 import datetime
 import csv
 import nltk
+nltk.download('punkt')
 import ssl
 import streamlit as st
 import random
