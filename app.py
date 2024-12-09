@@ -1,9 +1,8 @@
 import os
 import json
-import datetime
+import datetime  # Ensure datetime is correctly imported
 import csv
 import nltk
-nltk.download('punkt')
 import ssl
 import streamlit as st
 import random
@@ -20,7 +19,8 @@ nltk.data.path.append(os.path.abspath("nltk_data"))
 nltk.download('punkt')
 
 # Load intents from the JSON file
-file_path = os.path.abspath("chatbot\intents.jason")
+file_path = os.path.abspath("chatbot/intents.json")
+print("Intents file path:", file_path)  # Debugging print statement
 with open(file_path, "r") as file:
     intents = json.load(file)
 
@@ -48,7 +48,7 @@ def chatbot(input_text):
         if intent['tag'] == tag:
             response = random.choice(intent['responses'])
             return response
-        
+
 counter = 0
 
 def main():
@@ -73,7 +73,6 @@ def main():
         user_input = st.text_input("You:", key=f"user_input_{counter}")
 
         if user_input:
-
             # Convert the user input to a string
             user_input_str = str(user_input)
 
@@ -96,7 +95,6 @@ def main():
     elif choice == "Conversation History":
         # Display the conversation history in a collapsible expander
         st.header("Conversation History")
-        # with st.beta_expander("Click to see Conversation History"):
         with open('chat_log.csv', 'r', encoding='utf-8') as csvfile:
             csv_reader = csv.reader(csvfile)
             next(csv_reader)  # Skip the header row
